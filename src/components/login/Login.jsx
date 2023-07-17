@@ -17,21 +17,17 @@ const Login = () => {
       emailRef.current.style.outlineColor = 'red'
       emailRef.current.focus()
       email_errorRef.current.style.display = 'block'
-
     }
     else if (password !== user?.password) {
       passwordRef.current.style.outlineColor = 'red'
       passwordRef.current.focus()
       password_errorRef.current.style.display = 'block'
-
     }
-
     else {
       localStorage.setItem('user', JSON.stringify({ ...user, islogged: true }))
       navigate('/')
       window.location.reload()
     }
-
   }
   const handleEmailInput = (e) => {
     setEmail(e.target.value.toLowerCase())
@@ -39,7 +35,6 @@ const Login = () => {
       email_errorRef.current.style.display = 'none'
       emailRef.current.style.outlineColor = '#1778F2'
     }
-
   }
   const handlePasswordInput = (e) => {
     setPassword(e.target.value)
@@ -53,7 +48,7 @@ const Login = () => {
     if (user?.islogged) {
       navigate('/')
     }
-  }, [user?.islogged])
+  }, [navigate])
   return (
     <div className="login">
       <div className='container'>
@@ -72,14 +67,8 @@ const Login = () => {
           <div id="email_error" ref={email_errorRef}>The email address you entered isn't connected to an account. Find your account and log in.</div>
           <label htmlFor="password">Password</label>
           <input
-            type="password"
-            name="password"
-            id="password"
-            placeholder="Enter Password*"
-            onChange={handlePasswordInput}
-            ref={passwordRef}
-            value={password}
-            autoComplete='true'
+            type="password" name="password" id="password" placeholder="Enter Password*"
+            onChange={handlePasswordInput} ref={passwordRef} value={password} autoComplete='true'
           />
           <div id="pass_error" ref={password_errorRef}>Wrong password entered</div>
           <input type="submit" value="Login" />
