@@ -9,14 +9,16 @@ import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 
 const Navbar = ({ qna, setQna }) => {
-    const [searchInput, setSearchInput] = useState('')
-    const [menuOpen, setMenuOpen] = useState(false)
+    const [searchInput, setSearchInput] = useState('');
+    const [menuOpen, setMenuOpen] = useState(false);
+
     const handleOnEnter = (e) => {
         if (e.charCode === 13) {
-            const qnaFilter = qna.filter((qna) => qna.question.toLowerCase().includes(searchInput.toLowerCase()))
-            setQna(qnaFilter)
+            const qnaFilter = qna.filter((qnaItem) => qnaItem.question.toLowerCase().includes(searchInput.toLowerCase()));
+            setQna(qnaFilter);
         }
-    }
+    };
+};
     const handleLogOut = () => {
 
         if (window.confirm('Are you sure to LogOut?')) {
